@@ -1,0 +1,25 @@
+#home{
+	width:1000px;
+	margin: auto;
+	background: #FFFFFF;
+}
+.dataTables_wrapper{
+	width: 600px;
+}
+.dataTables_wrapper  .fg-toolbar{
+	font-size: 0.8em;
+	 height: 22px;
+}
+.dataTable{
+	width: 100%;	
+}
+.dataTable thead tr{
+	height: 30px;
+}	
+.dataTable tbody tr{
+	height: 100px;
+}
+.dataTable thead tr th.hidden,
+.dataTable tbody tr td.hidden{
+	display: none;
+}
