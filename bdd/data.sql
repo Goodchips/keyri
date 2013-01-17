@@ -39,4 +39,51 @@ SET time_zone = "+00:00";
 		VALUES(0000000009, 'Palais des Beaux Arts', 'Place de la République', 'LILLE', '59000', 'FRANCE');
  INSERT INTO `portal` (`id`, `name`, `address`, `city`, `zip`, `country`) 
 		VALUES(0000000010, 'République', 'République Beaux Arts', 'LILLE', '59000', 'FRANCE');
-
+ INSERT INTO `portal` (`id`, `name`, `address`, `city`, `zip`, `country`) 
+		VALUES(0000000011, 'Statue du Ptit Quinquin', '', 'LILLE', '59000', 'FRANCE');
+ INSERT INTO `portal` (`id`, `name`, `address`, `city`, `zip`, `country`) 
+		VALUES(0000000012, 'Eglise Saint-Maurice', '', 'LILLE', '59000', 'FRANCE');
+ INSERT INTO `portal` (`id`, `name`, `address`, `city`, `zip`, `country`) 
+		VALUES(0000000013, 'Bosses de Briques', '', 'LILLE', '59000', 'FRANCE');
+INSERT INTO `portal` (`id`, `name`, `address`, `city`, `zip`, `country`) 
+		VALUES(0000000014, 'Passement de Nathalie Eleme', '', 'LILLE', '59000', 'FRANCE');
+INSERT INTO `portal` (`id`, `name`, `address`, `city`, `zip`, `country`)
+		VALUES(0000000015, 'UFO, ross lovergrouve', '', 'LILLE', '59000', 'FRANCE');
+INSERT INTO `portal` (`id`, `name`, `address`, `city`, `zip`, `country`)
+		VALUES(0000000016, 'Angels-Demon.Parade', '', 'LILLE', '59000', 'FRANCE');
+INSERT INTO `portal` (`id`, `name`, `address`, `city`, `zip`, `country`)
+		VALUES(0000000017, 'La place du Général de Gaulle', '', 'LILLE', '59000', 'FRANCE');
+INSERT INTO `portal` (`id`, `name`, `address`, `city`, `zip`, `country`)
+		VALUES(0000000018, 'Grand Place de Lille', '', 'LILLE', '59000', 'FRANCE');
+INSERT INTO `portal` (`id`, `name`, `address`, `city`, `zip`, `country`)
+		VALUES(0000000019, 'Vue depuis la place du Général de Gaulle', '', 'LILLE', '59000', 'FRANCE');
+INSERT INTO `portal` (`id`, `name`, `address`, `city`, `zip`, `country`)
+		VALUES(0000000020, 'Grand Place : Colonne', '', 'LILLE', '59000', 'FRANCE');
+INSERT INTO `portal` (`id`, `name`, `address`, `city`, `zip`, `country`)
+		VALUES(0000000021, 'Cour intérieur de la', '', 'LILLE', '59000', 'FRANCE');
+INSERT INTO `portal` (`id`, `name`, `address`, `city`, `zip`, `country`)
+		VALUES(0000000022, 'Vieille Bourse', '', 'LILLE', '59000', 'FRANCE');
+INSERT INTO `portal` (`id`, `name`, `address`, `city`, `zip`, `country`)
+		VALUES(0000000023, 'Beffroi de la chambre', '', 'LILLE', '59000', 'FRANCE');
+INSERT INTO `portal` (`id`, `name`, `address`, `city`, `zip`, `country`)
+		VALUES(0000000024, 'Opera de Lille', '', 'LILLE', '59000', 'FRANCE');
+INSERT INTO `portal` (`id`, `name`, `address`, `city`, `zip`, `country`)
+		VALUES(0000000025, 'Léon Trulin statue', '', 'LILLE', '59000', 'FRANCE');
+INSERT INTO `portal` (`id`, `name`, `address`, `city`, `zip`, `country`)
+		VALUES(0000000026, 'hôtel Casino Barrière', '', 'LILLE', '59000', 'FRANCE');
+INSERT INTO `portal` (`id`, `name`, `address`, `city`, `zip`, `country`)
+		VALUES(0000000027, 'Arlequin', '', 'LILLE', '59000', 'FRANCE');
+INSERT INTO `portal` (`id`, `name`, `address`, `city`, `zip`, `country`)
+		VALUES(0000000028, 'Giant Flowers Statue in front', '', 'LILLE', '59000', 'FRANCE');
+INSERT INTO `portal` (`id`, `name`, `address`, `city`, `zip`, `country`)
+		VALUES(0000000029, 'Tour du Crédit Lyonnais', '', 'LILLE', '59000', 'FRANCE');
+INSERT INTO `portal` (`id`, `name`, `address`, `city`, `zip`, `country`)
+		VALUES(0000000030, 'Gare Lille Europe', '', 'LILLE', '59000', 'FRANCE');
+INSERT INTO `portal` (`id`, `name`, `address`, `city`, `zip`, `country`)
+		VALUES(0000000031, 'Piniata Geante', '', 'LILLE', '59000', 'FRANCE');
+INSERT INTO `portal` (`id`, `name`, `address`, `city`, `zip`, `country`)
+		VALUES(0000000032, 'Beffroi de lHotel de Ville', '', 'LILLE', '59000', 'FRANCE');
+INSERT INTO `portal` (`id`, `name`, `address`, `city`, `zip`, `country`)
+		VALUES(0000000033, 'Fresque Murale Geante', '', 'LILLE', '59000', 'FRANCE');
+INSERT INTO `portal` (`id`, `name`, `address`, `city`, `zip`, `country`)
+		VALUES(0000000034, 'La Citadelle', '', 'LILLE', '59000', 'FRANCE');
