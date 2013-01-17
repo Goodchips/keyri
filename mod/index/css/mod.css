@@ -7,7 +7,7 @@
 body{
 	background-color: #000000;
 	font-size: 14px;
-	color: #000000;
+	color: #FFFFFF;
 	text-align: center;
 }
 
@@ -15,6 +15,12 @@ table{
 	font-size: 14px;
 	color: #000000;
 	text-align: center;
+    border-collapse: collapse;
+}
+
+table td, table th
+{
+    padding: 0;
 }
 
 img{
@@ -23,7 +29,7 @@ img{
 
 a{
 	text-decoration: none;
-	color: #000000;
+	color: #FFFFFF;
 }
 
 #page{
@@ -35,13 +41,11 @@ a{
 /* HEADER */
 #header{
 	width: 1000px;
-	background-color: #FFFFFF;
+	background-color: #000000;
 	margin:auto;
 }
 
-#header td.logo{
-	width: 150px;
-}
+#header td.logo{}
 #header td.center{
 	width: 700px;
 }

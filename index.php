@@ -34,9 +34,7 @@
 			
 			<table id="header" cellspacing="0px" cellpadding="0px">
 				<tr>
-					<td class="logo">
-						<img src="mod/index/img/logo.png" />
-					</td>
+					<td class="logo"><img width="160" height="80" src="mod/index/img/logo.png" /></td>
 					<td class="center">
 						<?php if(!isset($_SESSION['user'])): ?>
 							<form action="index.php" method="post" style="margin-left:20px;">Connexion : <input type="text" name="login" maxlength="20" style="padding:2px; border:0px;"> <input type="password" name="password" maxlength="20" style="padding:2px; border:0px;"> <input type="submit" value="OK" style="padding:3px; border:0px; background-color:#000000; color:#ffffff;"></form>

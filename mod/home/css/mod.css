@@ -1,10 +1,11 @@
 #home{
 	width:1000px;
 	margin: auto;
-	background: #FFFFFF;
+	background: #000000;
 }
 .dataTables_wrapper{
 	width: 600px;
+	margin: auto;
 }
 .dataTables_wrapper  .fg-toolbar{
 	font-size: 0.8em;
@@ -19,7 +20,34 @@
 .dataTable tbody tr{
 	height: 100px;
 }
+table.dataTable tbody tr.odd {
+    background-color: #000000;
+    color: #FFFFFF;
+}
+table.dataTable tbody tr.even {
+    background-color: #000000;
+    color: #FFFFFF;
+}
 .dataTable thead tr th.hidden,
 .dataTable tbody tr td.hidden{
 	display: none;
+}
+.dataTable tbody tr td{
+	border-bottom: 1px solid #FFFFFF;
+}
+table.tooltip{
+	margin:auto;
+}
+table.tooltip td.name{
+	text-align: left;
+	padding-right: 10px;
+	padding-left: 5px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+table.tooltip td.number{
+	text-align: right;
+	padding-right: 5px;	
+	padding-top: 3px;
+	padding-bottom: 3px;
 }
