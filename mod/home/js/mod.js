@@ -16,6 +16,9 @@ $(document).ready(function(){
 		],
 		"oLanguage": {
 			"sInfo": " _END_/_TOTAL_ portails",
+			"sInfoFiltered" : "",
+			"sInfoEmpty": "Aucun portail",
+			"sZeroRecords": "Aucun portail trouvé",
 			"sSearch": "Filtre :"
 		}
 	});
