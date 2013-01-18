@@ -43,7 +43,7 @@
 					<td class="user">
 						<?php if(isset($_SESSION['user'])): ?>
 							<?php echo $_SESSION['user']['nickname']; ?>
-							<a href="?logout=1"><img src="mod/index/img/logout.png" /></a>
+							<a class="logout" href="?logout=1">X</a>
 						<?php endif; ?>
 					</td>
 				</tr>

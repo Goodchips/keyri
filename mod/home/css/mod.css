@@ -3,22 +3,35 @@
 	margin: auto;
 	background: #000000;
 }
-.dataTables_wrapper{
-	width: 600px;
+div.dataTables_wrapper{
+	width: 970px;
 	margin: auto;
 }
-.dataTables_wrapper  .fg-toolbar{
+div.dataTables_wrapper div.fg-toolbar{
 	font-size: 0.8em;
-	 height: 22px;
+	height: 22px;
 }
-.dataTable{
+div.dataTables_wrapper div.fg-toolbar div.dataTables_filter{
+	width: 300px;
+	float: left;
+	text-align: left;
+}
+div.dataTables_wrapper div.fg-toolbar div.dataTables_filter input{
+	width: 250px;
+}
+div.dataTables_wrapper div.fg-toolbar div.dataTables_info{
+	float: right;
+	clear:none;
+	width: 100px;	
+}
+table.dataTable{
 	width: 100%;	
 }
-.dataTable thead tr{
+table.dataTable thead tr{
 	height: 30px;
 }	
-.dataTable tbody tr{
-	height: 100px;
+table.dataTable tbody tr{
+	height: 40px;
 }
 table.dataTable tbody tr.odd {
     background-color: #000000;
@@ -28,26 +41,50 @@ table.dataTable tbody tr.even {
     background-color: #000000;
     color: #FFFFFF;
 }
-.dataTable thead tr th.hidden,
-.dataTable tbody tr td.hidden{
-	display: none;
+table.dataTable tr.odd td.sorting_1,
+table.dataTable tr.even td.sorting_1 {
+    background-color: #000000;
+    border-right: 1px dashed #2F2FFF;
 }
-.dataTable tbody tr td{
+table.dataTable tr.odd td.sorting_2,
+table.dataTable tr.even td.sorting_2 {
+    background-color: #000000;
+    border-right: 1px dashed #6F6FFF;
+}
+table.dataTable tr.odd td.sorting_3,
+table.dataTable tr.even td.sorting_3 {
+    background-color: #000000;
+    border-right: 1px dashed #BFBFFF;
+}
+table.dataTable thead tr th.hidden,
+table.dataTable tbody tr td.hidden{
+	display: none;
+	visibility: hidden;
+}
+table.dataTable tbody tr td{
 	border-bottom: 1px solid #FFFFFF;
 }
+
 table.tooltip{
+	width: 90%;
 	margin:auto;
 }
 table.tooltip td.name{
 	text-align: left;
-	padding-right: 10px;
-	padding-left: 5px;
-	padding-top: 3px;
-	padding-bottom: 3px;
 }
 table.tooltip td.number{
 	text-align: right;
-	padding-right: 5px;	
-	padding-top: 3px;
-	padding-bottom: 3px;
 }
+.tooltip-table{
+	width: 140px;
+}
+table.actions{
+	color: #FFFFFF;
+	height: 100%;
+	width: 100%;
+}
+table.actions tbody tr td{
+	border: none;
+}
+
+

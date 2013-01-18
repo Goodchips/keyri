@@ -11,7 +11,7 @@
 				<th class="hidden">tooltip_keys</th>
 				<th>Intérêt</th>
 				<th class="hidden">tooltip_grades</th>
-				<th>@<th>
+				<th>myKeyRI<th>
 			</tr>
 		</thead>
 		<tbody>
@@ -43,7 +43,22 @@
 					<?php endforeach; ?>
 					</table>
 				<?php endif; ?></td>
-				<td>K<br/>-&nbsp;X&nbsp;+<br/><br/>G<br/>-&nbsp;Y&nbsp;+</td>
+				<td>
+					<table class="actions">
+						<tr><td colspan="3">Clés</td></tr>
+						<tr>
+							<td>-</td>
+							<td>0</td>
+							<td>+</td>
+						</tr>	
+						<tr><td colspan="3">Intêret</td></tr>
+						<tr>
+							<td>-</td>
+							<td>0</td>
+							<td>+</td>
+						</tr>						
+					</table>
+				</td>
 			</tr>
 			<?php endforeach; ?>
 		</tbody>		
