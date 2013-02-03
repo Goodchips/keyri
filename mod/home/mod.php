@@ -1,5 +1,5 @@
 <div id='home'>
-	<?php $portals = Webapp::getPortals($db_link); ?>
+	<?php $portals = Webapp::getPortalsWithUserInfo($db_link); ?>
 	<table id="datatable">
 		<thead>
 			<tr>
@@ -8,16 +8,16 @@
 				<th>Nom</th>
 				<th>Image</th>
 				<th>Clés</th>
-				<th class="hidden">tooltip_keys</th>
+				<th>tooltip_keys</th>
 				<th>Intérêt</th>
-				<th class="hidden">tooltip_grades</th>
-				<th>myKeyRI<th>
+				<th>tooltip_grades</th>
+				<th><?php echo $_SESSION['user']['nickname'] ?></th>
 			</tr>
 		</thead>
 		<tbody>
 			<?php foreach($portals as $portal): ?>
-			<tr>
-				<td><?php echo $portal['id']; ?></td>
+			<tr class="row">
+				<td class="hidden"><?php echo $portal['id']; ?></td>
 				<td><?php echo $portal['city']; ?></td>
 				<td><?php echo $portal['name']; ?></td>
 				<td><img src="<?php echo $portal['img']; ?>" width="120" /></td>
@@ -47,14 +47,17 @@
 					<table class="actions">
 						<tr><td colspan="3">Clés</td></tr>
 						<tr>
-							<td>-</td>
-							<td>0</td>
-							<td>+</td>
+							<td><input type="button" class="button-keys-minus" value="-" /></td>
+							<td>
+								<input type="button" class="button-keys" value="<?php echo $portal['user_keys']; ?>" />
+								<input type="text" maxlength="2" class="text-keys" value="<?php echo $portal['user_keys']; ?>" />
+							</td>
+							<td><input type="button" class="button-keys-plus" value="+" /></td>
 						</tr>	
 						<tr><td colspan="3">Intêret</td></tr>
 						<tr>
 							<td>-</td>
-							<td>0</td>
+							<td><?php echo $portal['user_grade']; ?></td>
 							<td>+</td>
 						</tr>						
 					</table>

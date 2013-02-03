@@ -80,5 +80,74 @@ class Webapp{
 		}				
 		return $portals;	
 	}	
+	public static function getPortalsWithUserInfo($db_link){
+		$portals = array();
+		$sql  = "SELECT `p`.`id`,`p`.`city`,`p`.`name`,SUM(`phu`.`keys`) AS `keys`,SUM(`phu`.`grade`) AS `grades` FROM `portal` AS `p` ";
+		$sql .= "LEFT JOIN `portal_has_user` AS `phu` ON `phu`.`id_portal` = `p`.`id` GROUP BY `p`.`id`";
+		$result = mysql_query($sql, $db_link);
+		if($result){
+			while($row = mysql_fetch_assoc($result)){
+				$row['img'] = "media/portal/".$row['id'].".jpg";
+				$sql_k  = "SELECT u.nickname, phu.keys FROM user AS u, portal_has_user AS phu ";
+				$sql_k .= "WHERE phu.id_user = u.id AND phu.id_portal = ".$row['id']." AND phu.keys IS NOT NULL AND phu.keys <> 0 ";
+				$sql_k .= "ORDER BY phu.keys DESC";
+				$result_k = mysql_query($sql_k, $db_link);
+				$k = array();
+				while($row_k = mysql_fetch_assoc($result_k)){
+					if(strcmp($row_k['nickname'],$_SESSION['user']['nickname']) == 0){
+						$u_keys = $row_k['keys'];
+					}
+					$k[] = $row_k;
+				}
+				$row['tooltip_keys'] = $k;
+				
+				$sql_g  = "SELECT u.nickname, phu.grade FROM user AS u, portal_has_user AS phu ";
+				$sql_g .= "WHERE phu.id_user = u.id AND phu.id_portal = ".$row['id']." AND phu.grade IS NOT NULL AND phu.grade <> 0 ";
+				$sql_g .= "ORDER BY phu.grade DESC";
+				$result_g = mysql_query($sql_g, $db_link);
+				$g = array();
+				while($row_g = mysql_fetch_assoc($result_g)){
+					if(strcmp($row_g['nickname'],$_SESSION['user']['nickname']) == 0){
+						$u_grade = $row_g['grade'];
+					}
+					$g[] = $row_g;
+				}
+				$row['tooltip_grades'] = $g;
+				$row['user_keys'] = empty($u_keys) ? 0 : $u_keys;			
+				$row['user_grade'] = empty($u_grade) ? 0 : $u_grade;			
+				
+				$portals[] = $row;
+				unset($row_k);
+				unset($k);
+				unset($row_g);
+				unset($g);
+			}
+		}				
+		return $portals;	
+	}	
+
+	// 
+	public static function setPortalUserKeys($db_link,$id_portal,$id_user,$keys){
+		if(is_int($keys)){
+			$sql  = "UPDATE portal_has_user SET `keys` = ".$keys;
+			$sql .= " WHERE `id_portal` = ".$id_portal." AND `id_user` = ".$id_user;
+			return mysql_query($sql, $db_link);			
+		}
+		return false;
+	}
+	public static function setPortalUserGrade($db_link,$id_portal,$id_user,$grade){
+		if(is_int($grade)){	
+			$sql  = "UPDATE portal_has_user SET grade = ".mysql_real_escape_string($grade);
+			$sql .= " WHERE id_portal = ".$id_portal." AND id_user = ".$id_user;
+			return mysql_query($sql, $db_link);			
+		}
+		return false;
+	}
+	public static function setPortalField($db_link,$id_portal,$field,$value){
+		$value = mysql_real_escape_string($value);
+		$sql  = "UPDATE portal SET `".$field.'` = "'.$value."'";
+		$sql .= " WHERE id_portal = ".$id_portal;
+		return mysql_query($sql, $db_link);			
+	}	
 }	
 ?>
