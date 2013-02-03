@@ -56,9 +56,12 @@
 						</tr>	
 						<tr><td colspan="3">Intêret</td></tr>
 						<tr>
-							<td>-</td>
-							<td><?php echo $portal['user_grade']; ?></td>
-							<td>+</td>
+							<td><input type="button" class="button-grade-minus" value="-" /></td>
+							<td>
+								<input type="button" class="button-grade" value="<?php echo $portal['user_grade']; ?>" />
+								<input type="text" maxlength="2" class="text-grade" value="<?php echo $portal['user_grade']; ?>" />
+							</td>
+							<td><input type="button" class="button-grade-plus" value="+" /></td>
 						</tr>						
 					</table>
 				</td>

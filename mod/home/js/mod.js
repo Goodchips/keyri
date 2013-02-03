@@ -29,12 +29,12 @@ $(document).ready(function(){
 	$( ".grades" ).tooltip({ content: "0" , items: "span", tooltipClass: "tooltip-table",track: true, open: function( event, ui ) {
 		if($(this).next().html().length > 0) { $( ".grades" ).tooltip( "option", "content",$(this).next().html() ); }
 	}});
-	$('.button-keys').bind('click',function(){
+	$('.button-keys, .button-grade').bind('click',function(){
 		$(this).hide();
 		$(this).next().css('display','block').focus(function(){ $(this).select(); }).focus();
 	});
 	//			TOUCHES PERMISES : 0123456789 del et backspace	
-	$('.text-keys').bind('keydown',function(e){
+	$('.text-keys, .text-grade').bind('keydown',function(e){
 		var key = e.which || e.keyCode;
 
 	     if ( !e.altKey && !e.ctrlKey && e.shiftKey &&
@@ -84,4 +84,30 @@ $(document).ready(function(){
 		var b = $(this).parent().parent().find('.button-keys');
 		b.val( parseInt(b.val()) + 1);
 	});
+	$('.text-grade').bind('focusout',function(){
+		var b = $(this).prev();
+		var v = $(this).val() ? $(this).val() : b.val();
+		var id_portal = $(this).parents('tr.row').children('td:first').html();
+
+		if(v == b.val()){
+			$(this).val(v).hide();
+			b.val(v).show();			
+		}
+		else{
+			$(this).hide();
+			$(this).parent().parent().find('.button-grade-minus,.button-grade-plus').hide();
+			$.ajax({
+				type: "POST",
+				url: rootUrl,
+				data: { t: "editGrade", id_portal: id_portal, grade:  v}
+			}).done(function( msg ) {
+				if(msg == "1"){
+					b.val(v);					
+				}
+			}).always(function(){
+				b.show();
+				$(document).find('.button-grade-minus,.button-grade-plus').show();				
+			});
+		}
+	});	
 });

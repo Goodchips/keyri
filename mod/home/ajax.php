@@ -16,7 +16,9 @@
 				}
 				break;
 			case 'editGrade':
-				$ajax_return = Webapp::setPortalUserGrade($db_link,$id_portal,$id_user,$grade);			
+				if(isset($_POST['id_portal']) && isset($_POST['grade'])){
+					$ajax_return = Webapp::setPortalUserGrade($db_link,$_POST['id_portal'],$_SESSION['user']['id'],intval($_POST['grade']));			
+				}	
 				break;
 			case 'editName':			
 				$ajax_return = Webapp::setPortalField($db_link,$id_portal,'name',$name);			

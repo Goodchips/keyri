@@ -137,8 +137,8 @@ class Webapp{
 	}
 	public static function setPortalUserGrade($db_link,$id_portal,$id_user,$grade){
 		if(is_int($grade)){	
-			$sql  = "UPDATE portal_has_user SET grade = ".mysql_real_escape_string($grade);
-			$sql .= " WHERE id_portal = ".$id_portal." AND id_user = ".$id_user;
+			$sql  = "UPDATE portal_has_user SET `grade` = ".$grade;
+			$sql .= " WHERE `id_portal` = ".$id_portal." AND `id_user` = ".$id_user;
 			return mysql_query($sql, $db_link);			
 		}
 		return false;

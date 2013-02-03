@@ -90,7 +90,8 @@ table.actions tbody tr td{
 table.actions tbody tr td input.button-keys{	
 	
 }
-table.actions tbody tr td input.text-keys{
+table.actions tbody tr td input.text-keys,
+table.actions tbody tr td input.text-grade{
 	width:24px;
 	height: 14px;
 	text-align: center;
