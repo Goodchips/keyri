@@ -5,7 +5,7 @@
 	$db_link = Webapp::getDbLink(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 	session_start();
 	
-	$tasks = array('editKeys','editGrade','editName','editCity');
+	$tasks = array('editKeys','editGrade','editName','editCity','loadTable');
 	$ajax_return = false;
 		
 	if(isset($_SESSION['user']) && isset($_POST['t']) && in_array($_POST['t'], $tasks)){
@@ -25,8 +25,16 @@
 				break;
 			case 'editCity':
 				$ajax_return = Webapp::setPortalField($db_link,$id_portal,'city',$name);						
-				break;			
+				break;	
 		}
+	}
+	elseif (isset($_GET['t']) && in_array($_GET['t'], $tasks)){
+		switch($_GET['t']){
+			case 'loadTable':
+				$ajax_return = Webapp::getPortalsWithUserInfoJSON($db_link);
+				error_log($ajax_return);
+				break;		
+		}	
 	}
 	echo $ajax_return;
 	Webapp::closeDbLink($db_link);

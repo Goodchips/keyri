@@ -125,6 +125,58 @@ class Webapp{
 		}				
 		return $portals;	
 	}	
+	public static function getPortalsWithUserInfoJSON($db_link){
+		$portals = '{"aaData": [';
+		$sql  = "SELECT `p`.`id`,`p`.`city`,`p`.`name`, 'img' AS `img`, ";
+		$sql .= "SUM(`phu`.`keys`) AS `keys`, '' AS `tooltip_keys`, SUM(`phu`.`grade`) AS `grades`, '' AS `tooltip_grades` ";
+		$sql .= "FROM `portal` AS `p` ";
+		$sql .= "LEFT JOIN `portal_has_user` AS `phu` ON `phu`.`id_portal` = `p`.`id` GROUP BY `p`.`id`";
+		$result = mysql_query($sql, $db_link);
+		if($result){
+			while($row = mysql_fetch_assoc($result)){
+				$row['img'] = "<img src='media/portal/".$row['id'].".jpg' />";
+				$sql_k  = "SELECT u.nickname, phu.keys FROM user AS u, portal_has_user AS phu ";
+				$sql_k .= "WHERE phu.id_user = u.id AND phu.id_portal = ".$row['id']." AND phu.keys IS NOT NULL AND phu.keys <> 0 ";
+				$sql_k .= "ORDER BY phu.keys DESC";
+				$result_k = mysql_query($sql_k, $db_link);
+				$k = "<table class='tooltip'>";
+				while($row_k = mysql_fetch_assoc($result_k)){
+					if(strcmp($row_k['nickname'],$_SESSION['user']['nickname']) == 0){
+						$u_keys = $row_k['keys'];
+					}
+					$k .= "<tr><td class='name'>".$row_k['nickname']."</td><td class='number'>".$row_k['keys']."</td></tr>";
+				}
+				$row['tooltip_keys'] = $k."</table>";
+				
+				$sql_g  = "SELECT u.nickname, phu.grade FROM user AS u, portal_has_user AS phu ";
+				$sql_g .= "WHERE phu.id_user = u.id AND phu.id_portal = ".$row['id']." AND phu.grade IS NOT NULL AND phu.grade <> 0 ";
+				$sql_g .= "ORDER BY phu.grade DESC";
+				$result_g = mysql_query($sql_g, $db_link);
+				$g = "<table class='tooltip'>";
+				while($row_g = mysql_fetch_assoc($result_g)){
+					if(strcmp($row_g['nickname'],$_SESSION['user']['nickname']) == 0){
+						$u_grade = $row_g['grade'];
+					}
+					$g .= "<tr><td class='name'>".$row_g['nickname']."</td><td class='number'>".$row_g['grade']."</td></tr>";
+				}
+				$row['tooltip_grades'] = $g."</table>";
+				
+				$row['user_keys'] = empty($u_keys) ? 0 : $u_keys;			
+				$row['user_grade'] = empty($u_grade) ? 0 : $u_grade;			
+				
+				$row_json = '[';
+				foreach($row as $v){
+					$row_json .= '"'.$v.'",';
+				}
+				$portals .= substr($row_json, 0, -1)."],";
+				unset($row_k);
+				unset($k);
+				unset($row_g);
+				unset($g);
+			}
+		}				
+		return substr($portals, 0, -1)." ]}";;	
+	}	
 
 	// 
 	public static function setPortalUserKeys($db_link,$id_portal,$id_user,$keys){

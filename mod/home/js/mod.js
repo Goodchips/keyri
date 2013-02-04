@@ -4,14 +4,20 @@ $(document).ready(function(){
 		"bJQueryUI": true,
 		"bAutoWidth": true,
 		"sDom": '<"H"fri>t<"F"fri>',
+		"bProcessing": true,
+/*
+        "sAjaxSource": ajaxDatatableUrl,
+        "bDeferRender": true,
+*/
+        "bStateSave": true,
 		"aoColumns": [
 			{ "sWidth" : "0%", "bSearchable": false, "sClass": "hidden" },
 			{ "sWidth" : "20%"},
 			{ "sWidth" : "35%"},
 			{ "bSortable": false, "bSearchable": false, "sWidth" : "15%" },
-			{ "sWidth" : "10%"},
+			{ "sWidth" : "10%", "sClass": "keys"},
 			{ "sWidth" : "0%","bSearchable": false, "sClass": "hidden" },
-			{ "sWidth" : "10%"},
+			{ "sWidth" : "10%", "sClass": "grades"},
 			{ "sWidth" : "0%","bSearchable": false, "sClass": "hidden" },
 			{ "bSortable": false,"bSearchable": false, "sWidth" : "10%" }
 		],
@@ -31,7 +37,7 @@ $(document).ready(function(){
 	}});
 	$('.button-keys, .button-grade').bind('click',function(){
 		$(this).hide();
-		$(this).next().css('display','block').focus(function(){ $(this).select(); }).focus();
+		$(this).next().val($(this).val()).css('display','block').focus(function(){ $(this).select(); }).focus();
 	});
 	//			TOUCHES PERMISES : 0123456789 del et backspace	
 	$('.text-keys, .text-grade').bind('keydown',function(e){
@@ -64,7 +70,7 @@ $(document).ready(function(){
 			$(this).parent().parent().find('.button-keys-minus,.button-keys-plus').hide();
 			$.ajax({
 				type: "POST",
-				url: rootUrl,
+				url: ajaxUrl,
 				data: { t: "editKeys", id_portal: id_portal, keys:  v}
 			}).done(function( msg ) {
 				if(msg == "1"){
@@ -78,11 +84,41 @@ $(document).ready(function(){
 	});
 	$('.button-keys-minus').bind('click',function(){
 		var b = $(this).parent().parent().find('.button-keys');
-		b.val( parseInt(b.val()) - 1);
+		var v = parseInt(b.val()) - 1;
+		var id_portal = $(this).parents('tr.row').children('td:first').html();
+
+		$(this).parent().parent().find('.button-keys-minus,.button-keys-plus,.button-keys').hide();
+		$.ajax({
+			type: "POST",
+			url: ajaxUrl,
+			data: { t: "editKeys", id_portal: id_portal, keys:  v}
+		}).done(function( msg ) {
+			if(msg == "1"){
+				b.val(v);
+			}
+		}).always(function(){
+			b.show();
+			$(document).find('.button-keys-minus,.button-keys-plus').show();				
+		});	
 	});
 	$('.button-keys-plus').bind('click',function(){
 		var b = $(this).parent().parent().find('.button-keys');
-		b.val( parseInt(b.val()) + 1);
+		var v = parseInt(b.val()) + 1;
+		var id_portal = $(this).parents('tr.row').children('td:first').html();
+
+		$(this).parent().parent().find('.button-keys-minus,.button-keys-plus,.button-keys').hide();
+		$.ajax({
+			type: "POST",
+			url: ajaxUrl,
+			data: { t: "editKeys", id_portal: id_portal, keys:  v}
+		}).done(function( msg ) {
+			if(msg == "1"){
+				b.val(v);
+			}
+		}).always(function(){
+			b.show();
+			$(document).find('.button-keys-minus,.button-keys-plus').show();				
+		});	
 	});
 	$('.text-grade').bind('focusout',function(){
 		var b = $(this).prev();
@@ -98,7 +134,7 @@ $(document).ready(function(){
 			$(this).parent().parent().find('.button-grade-minus,.button-grade-plus').hide();
 			$.ajax({
 				type: "POST",
-				url: rootUrl,
+				url: ajaxUrl,
 				data: { t: "editGrade", id_portal: id_portal, grade:  v}
 			}).done(function( msg ) {
 				if(msg == "1"){
@@ -109,5 +145,43 @@ $(document).ready(function(){
 				$(document).find('.button-grade-minus,.button-grade-plus').show();				
 			});
 		}
+	});
+	$('.button-grade-minus').bind('click',function(){
+		var b = $(this).parent().parent().find('.button-grade');
+		var v = parseInt(b.val()) - 1;
+		var id_portal = $(this).parents('tr.row').children('td:first').html();
+
+		$(this).parent().parent().find('.button-grade-minus,.button-grade-plus,.button-grade').hide();
+		$.ajax({
+			type: "POST",
+			url: ajaxUrl,
+			data: { t: "editGrade", id_portal: id_portal, grade:  v}
+		}).done(function( msg ) {
+			if(msg == "1"){
+				b.val(v);
+			}
+		}).always(function(){
+			b.show();
+			$(document).find('.button-grade-minus,.button-grade-plus').show();				
+		});	
+	});
+	$('.button-grade-plus').bind('click',function(){
+		var b = $(this).parent().parent().find('.button-grade');
+		var v = parseInt(b.val()) + 1;
+		var id_portal = $(this).parents('tr.row').children('td:first').html();
+
+		$(this).parent().parent().find('.button-grade-minus,.button-grade-plus,.button-grade').hide();
+		$.ajax({
+			type: "POST",
+			url: ajaxUrl,
+			data: { t: "editGrade", id_portal: id_portal, grade:  v}
+		}).done(function( msg ) {
+			if(msg == "1"){
+				b.val(v);
+			}
+		}).always(function(){
+			b.show();
+			$(document).find('.button-grade-minus,.button-grade-plus').show();				
+		});	
 	});	
 });
