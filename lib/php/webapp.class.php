@@ -181,11 +181,27 @@ class Webapp{
 	// 
 	public static function setPortalUserKeys($db_link,$id_portal,$id_user,$keys){
 		if(is_int($keys)){
-			$sql  = "UPDATE portal_has_user SET `keys` = ".$keys;
+			$sql = "DELETE FROM portal_has_user";
 			$sql .= " WHERE `id_portal` = ".$id_portal." AND `id_user` = ".$id_user;
-			return mysql_query($sql, $db_link);			
+			if( mysql_query($sql, $db_link) ){
+				$sql  = "INSERT INTO portal_has_user SET `keys` = ".$keys;
+				$sql .= " WHERE `id_portal` = ".$id_portal." AND `id_user` = ".$id_user;
+				return mysql_query($sql, $db_link);					
+			}
 		}
 		return false;
+	}
+	
+	public static function setPortalUserInfo($db_link,$id_portal,$id_user,$keys,$grade){
+		if(is_int($keys) && is_int($grade)){
+			$sql = "DELETE FROM portal_has_user";
+			$sql .= " WHERE `id_portal` = ".$id_portal." AND `id_user` = ".$id_user;
+			if( mysql_query($sql, $db_link) ){
+				$sql  = "INSERT INTO portal_has_user VALUES (".$id_portal.",".$id_user.",".$keys.",".$grade." )";
+				return mysql_query($sql, $db_link);					
+			}
+		}
+		return false;		
 	}
 	public static function setPortalUserGrade($db_link,$id_portal,$id_user,$grade){
 		if(is_int($grade)){	

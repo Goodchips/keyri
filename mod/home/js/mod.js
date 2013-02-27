@@ -60,6 +60,7 @@ $(document).ready(function(){
 		var b = $(this).prev();
 		var v = $(this).val() ? $(this).val() : b.val();
 		var id_portal = $(this).parents('tr.row').children('td:first').html();
+		var grade = $(this).parents('tr.row').find('.text-grade').val();
 
 		if(v == b.val()){
 			$(this).val(v).hide();
@@ -71,7 +72,7 @@ $(document).ready(function(){
 			$.ajax({
 				type: "POST",
 				url: ajaxUrl,
-				data: { t: "editKeys", id_portal: id_portal, keys:  v}
+				data: { t: "editKeys", id_portal: id_portal, keys:  v, grade : grade}
 			}).done(function( msg ) {
 				if(msg == "1"){
 					b.val(v);					
@@ -86,12 +87,13 @@ $(document).ready(function(){
 		var b = $(this).parent().parent().find('.button-keys');
 		var v = parseInt(b.val()) - 1;
 		var id_portal = $(this).parents('tr.row').children('td:first').html();
+		var grade = $(this).parents('tr.row').find('.text-grade').val();
 
 		$(this).parent().parent().find('.button-keys-minus,.button-keys-plus,.button-keys').hide();
 		$.ajax({
 			type: "POST",
 			url: ajaxUrl,
-			data: { t: "editKeys", id_portal: id_portal, keys:  v}
+			data: { t: "editKeys", id_portal: id_portal, keys:  v, grade : grade}
 		}).done(function( msg ) {
 			if(msg == "1"){
 				b.val(v);
@@ -105,12 +107,13 @@ $(document).ready(function(){
 		var b = $(this).parent().parent().find('.button-keys');
 		var v = parseInt(b.val()) + 1;
 		var id_portal = $(this).parents('tr.row').children('td:first').html();
+		var grade = $(this).parents('tr.row').find('.text-grade').val();
 
 		$(this).parent().parent().find('.button-keys-minus,.button-keys-plus,.button-keys').hide();
 		$.ajax({
 			type: "POST",
 			url: ajaxUrl,
-			data: { t: "editKeys", id_portal: id_portal, keys:  v}
+			data: { t: "editKeys", id_portal: id_portal, keys:  v, grade : grade}
 		}).done(function( msg ) {
 			if(msg == "1"){
 				b.val(v);
@@ -124,6 +127,7 @@ $(document).ready(function(){
 		var b = $(this).prev();
 		var v = $(this).val() ? $(this).val() : b.val();
 		var id_portal = $(this).parents('tr.row').children('td:first').html();
+		var keys = $(this).parents('tr.row').find('.text-keys').val();
 
 		if(v == b.val()){
 			$(this).val(v).hide();
@@ -135,7 +139,7 @@ $(document).ready(function(){
 			$.ajax({
 				type: "POST",
 				url: ajaxUrl,
-				data: { t: "editGrade", id_portal: id_portal, grade:  v}
+				data: { t: "editGrade", id_portal: id_portal, grade:  v, keys: keys}
 			}).done(function( msg ) {
 				if(msg == "1"){
 					b.val(v);					
@@ -150,12 +154,13 @@ $(document).ready(function(){
 		var b = $(this).parent().parent().find('.button-grade');
 		var v = parseInt(b.val()) - 1;
 		var id_portal = $(this).parents('tr.row').children('td:first').html();
+		var keys = $(this).parents('tr.row').find('.text-keys').val();
 
 		$(this).parent().parent().find('.button-grade-minus,.button-grade-plus,.button-grade').hide();
 		$.ajax({
 			type: "POST",
 			url: ajaxUrl,
-			data: { t: "editGrade", id_portal: id_portal, grade:  v}
+			data: { t: "editGrade", id_portal: id_portal, grade:  v, keys: keys}
 		}).done(function( msg ) {
 			if(msg == "1"){
 				b.val(v);
@@ -169,12 +174,13 @@ $(document).ready(function(){
 		var b = $(this).parent().parent().find('.button-grade');
 		var v = parseInt(b.val()) + 1;
 		var id_portal = $(this).parents('tr.row').children('td:first').html();
+		var keys = $(this).parents('tr.row').find('.text-keys').val();
 
 		$(this).parent().parent().find('.button-grade-minus,.button-grade-plus,.button-grade').hide();
 		$.ajax({
 			type: "POST",
 			url: ajaxUrl,
-			data: { t: "editGrade", id_portal: id_portal, grade:  v}
+			data: { t: "editGrade", id_portal: id_portal, grade:  v, keys: keys}
 		}).done(function( msg ) {
 			if(msg == "1"){
 				b.val(v);

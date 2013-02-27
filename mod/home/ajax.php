@@ -11,13 +11,13 @@
 	if(isset($_SESSION['user']) && isset($_POST['t']) && in_array($_POST['t'], $tasks)){
 		switch($_POST['t']){
 			case 'editKeys':
-				if(isset($_POST['id_portal']) && isset($_POST['keys'])){
-					$ajax_return = Webapp::setPortalUserKeys($db_link,$_POST['id_portal'],$_SESSION['user']['id'],intval($_POST['keys']));
+				if(isset($_POST['id_portal']) && isset($_POST['keys']) && isset($_POST['grade'])){
+					$ajax_return = Webapp::setPortalUserInfo($db_link,$_POST['id_portal'],$_SESSION['user']['id'],intval($_POST['keys']),intval($_POST['grade']));
 				}
 				break;
 			case 'editGrade':
-				if(isset($_POST['id_portal']) && isset($_POST['grade'])){
-					$ajax_return = Webapp::setPortalUserGrade($db_link,$_POST['id_portal'],$_SESSION['user']['id'],intval($_POST['grade']));			
+				if(isset($_POST['id_portal']) && isset($_POST['grade']) && isset($_POST['keys'])){
+					$ajax_return = Webapp::setPortalUserInfo($db_link,$_POST['id_portal'],$_SESSION['user']['id'],intval($_POST['keys']),intval($_POST['grade']));			
 				}	
 				break;
 			case 'editName':			
