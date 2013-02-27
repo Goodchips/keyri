@@ -6,7 +6,8 @@ class Webapp{
 	public static function getDbLink($db_host, $db_user, $db_password, $db_name){
 		$db_link = mysql_connect($db_host, $db_user, $db_password); if(!$db_link){ die('Failed to connect to MySQL : ' . mysql_error()); }
 		$db_selected = mysql_select_db($db_name, $db_link); if(!$db_selected){ die('Failed to select database : ' . mysql_error()); }
-		mysql_set_charset('utf8', $db_link);
+/* 		mysql_set_charset('utf8', $db_link); */
+		mysql_query("SET NAMES 'utf8'");
 		return $db_link;
 	}
 	
@@ -117,8 +118,10 @@ class Webapp{
 				$row['user_grade'] = empty($u_grade) ? 0 : $u_grade;			
 				
 				$portals[] = $row;
+				unset($u_keys);
 				unset($row_k);
 				unset($k);
+				unset($u_grade);
 				unset($row_g);
 				unset($g);
 			}
@@ -169,8 +172,10 @@ class Webapp{
 					$row_json .= '"'.$v.'",';
 				}
 				$portals .= substr($row_json, 0, -1)."],";
+				unset($u_keys);
 				unset($row_k);
 				unset($k);
+				unset($u_grade);
 				unset($row_g);
 				unset($g);
 			}
