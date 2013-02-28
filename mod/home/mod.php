@@ -20,7 +20,7 @@
 				<td class="hidden"><?php echo $portal['id']; ?></td>
 				<td><?php echo $portal['city']; ?></td>
 				<td><?php echo $portal['name']; ?></td>
-				<td><img src="<?php echo $portal['img']; ?>" width="120" /></td>
+				<td><img src="<?php echo $portal['img']; ?>"/></td>
 				<td class="keys"><span><?php echo empty($portal['keys']) ? '0': $portal['keys']; ?></span></td>
 				<td class="hidden"><?php if (count($portal['tooltip_keys']) > 0): ?>
 					<table class="tooltip">
